@@ -1,0 +1,19 @@
+
+QUICK INSTALL
+-------------
+
+- you need a regular gcc compiler. Version 2.96 will do fine
+- type "make" in this directory
+- get a 1.4 MB DOS formatted floppy (FAT filesystem)
+- copy the following files to the floppy:
+    hermes/nucleus/kernel.img
+    hermes/appl.os/boot/boot
+    hermes/appl.os/window/window
+    hermes/appl/user/tetris
+    hermes/appl/user/user
+    hermes/tools/loader/load.exe
+- reboot the system in DOS mode
+- connect a PS/2 mouse
+- type "load kernel.img"
+
+Voila!

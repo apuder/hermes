@@ -1,0 +1,9 @@
+dbmain.o
+dbcmd.o
+dblex.o
+dbyacc.o
+dbsource.o
+syms.o
+wild.o
+step.o
+display.o

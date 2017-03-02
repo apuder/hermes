@@ -1,0 +1,121 @@
+
+Arno Puder
+Carlo Schmid Str.15
+6750 Kaiserslautern
+Tel.: 0631/13583
+
+
+   Hallo Rafael!
+
+Ich hoffe, Deine Me·technikklausur ist nach Deinen Vorstellungen
+verlaufen. Ich bereite mich gerade auf eine Sensortechnik PrÅfung vor.
+Kann nicht gerade behaupten, da· es mir Spa· macht!!!
+
+Wie ich es Dir ja schon "angedroht" habe, folgt nun eine Beschreibung
+von einigen C-Funktionen, die wir (mehr oder weniger) dringend
+brauchen. ZunÑchst einige allgemeine Bemerkungen: Alle Programme die Du
+schreiben wirst, laufen *NUR* unter MS-DOS; das hei·t, wir brauchen uns
+keine Gedanken Åber PortabilitÑt zwischen GNU-CC und Turbo-C zu machen.
+Deine Programme sollen also mit Turbo-C geschrieben werden und Du
+kannst von allem Gebrauch machen, was Dir die Runtime Library und
+ROM-BIOS zu bieten haben (unter HERMES wÑre das schon etwas schwieriger,
+da wir z.B. das ROM-BIOS nicht benutzen kînnen).
+
+Doch nun zu den Routinen im einzelnen. Ich habe mich bemÅht, mir
+Prototypen aus den Fingern zu "saugen". So sollte die Integration spÑter
+einfach von der Hand gehen. Alle Funktionen liefern einen HD_ERROR
+zurÅck (HD soll Åbrigens fÅr Hard Disk stehen!). Die einzelnen Fehler
+mu·t Du Dir natÅrlich Åberlegen, wobei sie in den meisten FÑllen recht
+eindeutig sind
+
+typedef enum {
+	NO_ERROR, ...
+} HD_ERROR;
+
+
+
+------------------------------------------------------------------------------
+1.) Ermittlung der Anzahl der physikalischen Plattenlaufwerke
+
+HD_ERROR hd_get_num_of_drives( int *num );
+
+Diese Funktion soll die Anzahl der *PHYSIKALISCHEN* Laufwerke zurÅckliefern.
+
+
+------------------------------------------------------------------------------
+2.) Zuordnung zwischen einem logischen und einem physikalischen Laufwerk
+
+HD_ERROR hd_map_drive( int logical_drive, int *physical_drive );
+
+logical_drive ist ein Eingabewert und gibt eine logische Platte
+(Partition) an und die Funktion bestimmt, auf welchem physikalischen
+Laufwerk sie sich befindet.
+
+
+------------------------------------------------------------------------------
+3.) Ermittlung von physikalischen Laufwerks-Parametern
+
+HD_ERROR hd_get_drive_info( int drive, HD_INFO *info );
+
+Liefert die von uns benîtigten Informationen Åber ein Laufwerk zurÅck.
+HD_INFO ist eine Struktur mit folgender Typ-Definition:
+
+typedef struct {
+	int		bytes_per_sector;	/* Bytes pro Sektor */
+	int		sectors_per_track;	/* Sektoren pro Spur (auf einer Seite) */
+	int		sides_per_cylinder	/* Seiten (Kîpfe) pro Zylinder */
+} HD_INFO;
+
+
+------------------------------------------------------------------------------
+4.) Testen auf Fragmentiertheit
+
+HD_ERROR hd_test_fragmentation( char *file_name, int *fragmented );
+
+Der Eingabeparameter ist ein normaler DOS-Dateiname. Diese Funktion soll
+testen, ob die (schon angelegte) Datei fragmentiert ist oder nicht. Der
+RÅckgabewert ist entsprechend TRUE oder FALSE.
+
+
+------------------------------------------------------------------------------
+5.) Ermittlen der physikalischen Position einer Datei
+
+HD_ERROR hd_get_file_position( char *file_name,
+                               int *drive,
+                               int *abs_pos,
+                               int *length );
+
+Eingabeparameter ist wiederum ein DOS-Dateiname (file_name). Die drei
+RÅckgabewerte bezeichnen das physikalische Laufwerk, auf dem sich die
+Datei befindet (drive), die absolute Position des ersten Sektors auf
+diesem Laufwerk (abs_pos) und die LÑnge der Datei (length). Die Einheit
+von abs_pos und length ist jeweils in Sektoren. Diese Funktion baut
+logischerweise auf die oben genannten auf.
+
+
+------------------------------------------------------------------------------
+6.) Anlegen einer DOS-Datei
+
+HD_ERROR hd_create_virtual_drive( char *file_name,
+                                  int length,
+                                  int *num_bad_sectors,
+                                  int *bad_sectors[] );
+
+Die Implementation dieser Funktion ist optional (weil am
+schwierigsten). Ziel dieser Funktion ist es, eine DOS-Datei mit dem
+Namen file_name anzulegen (eine Datei mit einem solchen Namen sollte
+also noch nicht existieren!). Die LÑnge der Datei ist durch length (in
+Sektoren) gegeben. Die Funktion sollte versuchen, ein freies StÅck auf
+der Platte zu finden, um dort das "virtuelle" Laufwerk *UNFRAGMENTIERT*
+anzulegen. Tauchen in dem Bereich Bad-Blocks auf, so sind diese als
+Ergebnis der Funktion zurÅck zu liefern (num_bad_sectors und
+bad_sectors).
+
+
+Das wÑre dann mal die vorlÑufige Spezifikation. Sag' mir mal was Du
+davon hÑlst. Ich hoffe, da· ich mich halbwegs verstÑndlich ausgedrÅckt
+habe... Viele GrÅ·e an Deine Keule (Theresia)...
+
+
+Arno
+

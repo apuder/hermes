@@ -1,0 +1,1082 @@
+
+
+Terminals which are not used:
+
+   TOKEN_UNDEF
+   COLON
+   DOLLAR
+   SQR_BRACKET_OPEN
+   SQR_BRACKET_CLOSE
+
+
+
+
+token types:
+ type -1 is $
+ type 256 is error
+ type 258 is TOKEN_UNDEF
+ type 259 is COMMAND_HELP
+ type 260 is COMMAND_CLS
+ type 261 is COMMAND_DISP_REGS
+ type 262 is COMMAND_DUMP
+ type 263 is COMMAND_TRANSLATE
+ type 264 is COMMAND_GDT
+ type 265 is COMMAND_PS
+ type 266 is COMMAND_WAKEUP
+ type 267 is COMMAND_VAR
+ type 268 is COMMAND_EXIT
+ type 269 is COMMAND_LOAD_EXE
+ type 270 is COMMAND_DISP_SYMS
+ type 271 is COMMAND_SHOW
+ type 272 is COMMAND_STEP
+ type 273 is NUMBER
+ type 274 is STRING
+ type 275 is LAST_VALUE
+ type 276 is VALUE1
+ type 277 is VALUE2
+ type 278 is VALUE3
+ type 279 is VALUE4
+ type 280 is VALUE5
+ type 281 is VALUE6
+ type 282 is VALUE7
+ type 283 is VALUE8
+ type 284 is VALUE9
+ type 285 is COLON
+ type 286 is DOLLAR
+ type 287 is COMMA
+ type 288 is ASSIGN
+ type 289 is OP_PLUS
+ type 290 is OP_MINUS
+ type 291 is OP_TIMES
+ type 292 is OP_DIV
+ type 293 is OP_AND
+ type 294 is OP_OR
+ type 295 is OP_RIGHT
+ type 296 is OP_LEFT
+ type 297 is OP_MOD
+ type 298 is OP_NOT
+ type 299 is BRACKET_OPEN
+ type 300 is BRACKET_CLOSE
+ type 301 is SQR_BRACKET_OPEN
+ type 302 is SQR_BRACKET_CLOSE
+
+
+state 0
+
+    COMMAND_HELP	shift, and go to state 1
+    COMMAND_CLS	shift, and go to state 2
+    COMMAND_DISP_REGS	shift, and go to state 3
+    COMMAND_DUMP	shift, and go to state 4
+    COMMAND_TRANSLATE	shift, and go to state 5
+    COMMAND_GDT	shift, and go to state 6
+    COMMAND_PS	shift, and go to state 7
+    COMMAND_WAKEUP	shift, and go to state 8
+    COMMAND_VAR	shift, and go to state 9
+    COMMAND_EXIT	shift, and go to state 10
+    COMMAND_LOAD_EXE	shift, and go to state 11
+    COMMAND_DISP_SYMS	shift, and go to state 12
+    COMMAND_SHOW	shift, and go to state 13
+    COMMAND_STEP	shift, and go to state 14
+    NUMBER	shift, and go to state 15
+    LAST_VALUE	shift, and go to state 16
+    VALUE1	shift, and go to state 17
+    VALUE2	shift, and go to state 18
+    VALUE3	shift, and go to state 19
+    VALUE4	shift, and go to state 20
+    VALUE5	shift, and go to state 21
+    VALUE6	shift, and go to state 22
+    VALUE7	shift, and go to state 23
+    VALUE8	shift, and go to state 24
+    VALUE9	shift, and go to state 25
+    OP_MINUS	shift, and go to state 26
+    OP_NOT	shift, and go to state 27
+    BRACKET_OPEN	shift, and go to state 28
+
+    $default	reduce using rule 1 (prg)
+
+    debug_command	go to state 29
+    prg 	go to state 71
+    disp_regs	go to state 30
+    dump_memory	go to state 31
+    expr	go to state 32
+    expr1	go to state 33
+    term	go to state 34
+    factor	go to state 35
+    db_value	go to state 36
+
+
+
+state 1
+
+    debug_command  ->  COMMAND_HELP .   (rule 11)
+
+    $default	reduce using rule 11 (debug_command)
+
+
+
+state 2
+
+    debug_command  ->  COMMAND_CLS .   (rule 9)
+
+    $default	reduce using rule 9 (debug_command)
+
+
+
+state 3
+
+    disp_regs  ->  COMMAND_DISP_REGS .   (rule 19)
+
+    $default	reduce using rule 19 (disp_regs)
+
+
+
+state 4
+
+    dump_memory  ->  COMMAND_DUMP .   (rule 20)
+    dump_memory  ->  COMMAND_DUMP . expr   (rule 21)
+    dump_memory  ->  COMMAND_DUMP . expr COMMA expr   (rule 22)
+
+    NUMBER	shift, and go to state 15
+    LAST_VALUE	shift, and go to state 16
+    VALUE1	shift, and go to state 17
+    VALUE2	shift, and go to state 18
+    VALUE3	shift, and go to state 19
+    VALUE4	shift, and go to state 20
+    VALUE5	shift, and go to state 21
+    VALUE6	shift, and go to state 22
+    VALUE7	shift, and go to state 23
+    VALUE8	shift, and go to state 24
+    VALUE9	shift, and go to state 25
+    OP_MINUS	shift, and go to state 26
+    OP_NOT	shift, and go to state 27
+    BRACKET_OPEN	shift, and go to state 28
+
+    $default	reduce using rule 20 (dump_memory)
+
+    expr	go to state 37
+    expr1	go to state 33
+    term	go to state 34
+    factor	go to state 35
+    db_value	go to state 38
+
+
+
+state 5
+
+    debug_command  ->  COMMAND_TRANSLATE . expr COMMA expr   (rule 10)
+
+    NUMBER	shift, and go to state 15
+    LAST_VALUE	shift, and go to state 16
+    VALUE1	shift, and go to state 17
+    VALUE2	shift, and go to state 18
+    VALUE3	shift, and go to state 19
+    VALUE4	shift, and go to state 20
+    VALUE5	shift, and go to state 21
+    VALUE6	shift, and go to state 22
+    VALUE7	shift, and go to state 23
+    VALUE8	shift, and go to state 24
+    VALUE9	shift, and go to state 25
+    OP_MINUS	shift, and go to state 26
+    OP_NOT	shift, and go to state 27
+    BRACKET_OPEN	shift, and go to state 28
+
+    expr	go to state 39
+    expr1	go to state 33
+    term	go to state 34
+    factor	go to state 35
+    db_value	go to state 38
+
+
+
+state 6
+
+    debug_command  ->  COMMAND_GDT .   (rule 6)
+
+    $default	reduce using rule 6 (debug_command)
+
+
+
+state 7
+
+    debug_command  ->  COMMAND_PS .   (rule 7)
+
+    $default	reduce using rule 7 (debug_command)
+
+
+
+state 8
+
+    debug_command  ->  COMMAND_WAKEUP . expr   (rule 8)
+
+    NUMBER	shift, and go to state 15
+    LAST_VALUE	shift, and go to state 16
+    VALUE1	shift, and go to state 17
+    VALUE2	shift, and go to state 18
+    VALUE3	shift, and go to state 19
+    VALUE4	shift, and go to state 20
+    VALUE5	shift, and go to state 21
+    VALUE6	shift, and go to state 22
+    VALUE7	shift, and go to state 23
+    VALUE8	shift, and go to state 24
+    VALUE9	shift, and go to state 25
+    OP_MINUS	shift, and go to state 26
+    OP_NOT	shift, and go to state 27
+    BRACKET_OPEN	shift, and go to state 28
+
+    expr	go to state 40
+    expr1	go to state 33
+    term	go to state 34
+    factor	go to state 35
+    db_value	go to state 38
+
+
+
+state 9
+
+    debug_command  ->  COMMAND_VAR .   (rule 12)
+
+    $default	reduce using rule 12 (debug_command)
+
+
+
+state 10
+
+    debug_command  ->  COMMAND_EXIT .   (rule 14)
+
+    $default	reduce using rule 14 (debug_command)
+
+
+
+state 11
+
+    debug_command  ->  COMMAND_LOAD_EXE . STRING   (rule 15)
+
+    STRING	shift, and go to state 41
+
+
+
+state 12
+
+    debug_command  ->  COMMAND_DISP_SYMS .   (rule 16)
+
+    $default	reduce using rule 16 (debug_command)
+
+
+
+state 13
+
+    debug_command  ->  COMMAND_SHOW . expr   (rule 18)
+
+    NUMBER	shift, and go to state 15
+    LAST_VALUE	shift, and go to state 16
+    VALUE1	shift, and go to state 17
+    VALUE2	shift, and go to state 18
+    VALUE3	shift, and go to state 19
+    VALUE4	shift, and go to state 20
+    VALUE5	shift, and go to state 21
+    VALUE6	shift, and go to state 22
+    VALUE7	shift, and go to state 23
+    VALUE8	shift, and go to state 24
+    VALUE9	shift, and go to state 25
+    OP_MINUS	shift, and go to state 26
+    OP_NOT	shift, and go to state 27
+    BRACKET_OPEN	shift, and go to state 28
+
+    expr	go to state 42
+    expr1	go to state 33
+    term	go to state 34
+    factor	go to state 35
+    db_value	go to state 38
+
+
+
+state 14
+
+    debug_command  ->  COMMAND_STEP .   (rule 17)
+
+    $default	reduce using rule 17 (debug_command)
+
+
+
+state 15
+
+    factor  ->  NUMBER .   (rule 36)
+
+    $default	reduce using rule 36 (factor)
+
+
+
+state 16
+
+    factor  ->  LAST_VALUE .   (rule 38)
+
+    $default	reduce using rule 38 (factor)
+
+
+
+state 17
+
+    db_value  ->  VALUE1 .   (rule 41)
+
+    $default	reduce using rule 41 (db_value)
+
+
+
+state 18
+
+    db_value  ->  VALUE2 .   (rule 42)
+
+    $default	reduce using rule 42 (db_value)
+
+
+
+state 19
+
+    db_value  ->  VALUE3 .   (rule 43)
+
+    $default	reduce using rule 43 (db_value)
+
+
+
+state 20
+
+    db_value  ->  VALUE4 .   (rule 44)
+
+    $default	reduce using rule 44 (db_value)
+
+
+
+state 21
+
+    db_value  ->  VALUE5 .   (rule 45)
+
+    $default	reduce using rule 45 (db_value)
+
+
+
+state 22
+
+    db_value  ->  VALUE6 .   (rule 46)
+
+    $default	reduce using rule 46 (db_value)
+
+
+
+state 23
+
+    db_value  ->  VALUE7 .   (rule 47)
+
+    $default	reduce using rule 47 (db_value)
+
+
+
+state 24
+
+    db_value  ->  VALUE8 .   (rule 48)
+
+    $default	reduce using rule 48 (db_value)
+
+
+
+state 25
+
+    db_value  ->  VALUE9 .   (rule 49)
+
+    $default	reduce using rule 49 (db_value)
+
+
+
+state 26
+
+    factor  ->  OP_MINUS . NUMBER   (rule 37)
+
+    NUMBER	shift, and go to state 43
+
+
+
+state 27
+
+    expr1  ->  OP_NOT . term   (rule 25)
+
+    NUMBER	shift, and go to state 15
+    LAST_VALUE	shift, and go to state 16
+    VALUE1	shift, and go to state 17
+    VALUE2	shift, and go to state 18
+    VALUE3	shift, and go to state 19
+    VALUE4	shift, and go to state 20
+    VALUE5	shift, and go to state 21
+    VALUE6	shift, and go to state 22
+    VALUE7	shift, and go to state 23
+    VALUE8	shift, and go to state 24
+    VALUE9	shift, and go to state 25
+    OP_MINUS	shift, and go to state 26
+    BRACKET_OPEN	shift, and go to state 28
+
+    term	go to state 44
+    factor	go to state 35
+    db_value	go to state 38
+
+
+
+state 28
+
+    factor  ->  BRACKET_OPEN . expr1 BRACKET_CLOSE   (rule 40)
+
+    NUMBER	shift, and go to state 15
+    LAST_VALUE	shift, and go to state 16
+    VALUE1	shift, and go to state 17
+    VALUE2	shift, and go to state 18
+    VALUE3	shift, and go to state 19
+    VALUE4	shift, and go to state 20
+    VALUE5	shift, and go to state 21
+    VALUE6	shift, and go to state 22
+    VALUE7	shift, and go to state 23
+    VALUE8	shift, and go to state 24
+    VALUE9	shift, and go to state 25
+    OP_MINUS	shift, and go to state 26
+    OP_NOT	shift, and go to state 27
+    BRACKET_OPEN	shift, and go to state 28
+
+    expr1	go to state 45
+    term	go to state 34
+    factor	go to state 35
+    db_value	go to state 38
+
+
+
+state 29
+
+    prg  ->  debug_command .   (rule 2)
+
+    $default	reduce using rule 2 (prg)
+
+
+
+state 30
+
+    debug_command  ->  disp_regs .   (rule 3)
+
+    $default	reduce using rule 3 (debug_command)
+
+
+
+state 31
+
+    debug_command  ->  dump_memory .   (rule 4)
+
+    $default	reduce using rule 4 (debug_command)
+
+
+
+state 32
+
+    debug_command  ->  expr .   (rule 5)
+
+    $default	reduce using rule 5 (debug_command)
+
+
+
+state 33
+
+    expr  ->  expr1 .   (rule 23)
+    expr1  ->  expr1 . OP_PLUS term   (rule 26)
+    expr1  ->  expr1 . OP_MINUS term   (rule 27)
+    expr1  ->  expr1 . OP_AND term   (rule 28)
+    expr1  ->  expr1 . OP_OR term   (rule 29)
+    expr1  ->  expr1 . OP_RIGHT term   (rule 30)
+    expr1  ->  expr1 . OP_LEFT term   (rule 31)
+
+    OP_PLUS	shift, and go to state 46
+    OP_MINUS	shift, and go to state 47
+    OP_AND	shift, and go to state 48
+    OP_OR	shift, and go to state 49
+    OP_RIGHT	shift, and go to state 50
+    OP_LEFT	shift, and go to state 51
+
+    $default	reduce using rule 23 (expr)
+
+
+
+state 34
+
+    expr1  ->  term .   (rule 24)
+    term  ->  term . OP_TIMES factor   (rule 33)
+    term  ->  term . OP_DIV factor   (rule 34)
+    term  ->  term . OP_MOD factor   (rule 35)
+
+    OP_TIMES	shift, and go to state 52
+    OP_DIV	shift, and go to state 53
+    OP_MOD	shift, and go to state 54
+
+    $default	reduce using rule 24 (expr1)
+
+
+
+state 35
+
+    term  ->  factor .   (rule 32)
+
+    $default	reduce using rule 32 (term)
+
+
+
+state 36
+
+    debug_command  ->  db_value . ASSIGN expr   (rule 13)
+    factor  ->  db_value .   (rule 39)
+
+    ASSIGN	shift, and go to state 55
+
+    $default	reduce using rule 39 (factor)
+
+
+
+state 37
+
+    dump_memory  ->  COMMAND_DUMP expr .   (rule 21)
+    dump_memory  ->  COMMAND_DUMP expr . COMMA expr   (rule 22)
+
+    COMMA	shift, and go to state 56
+
+    $default	reduce using rule 21 (dump_memory)
+
+
+
+state 38
+
+    factor  ->  db_value .   (rule 39)
+
+    $default	reduce using rule 39 (factor)
+
+
+
+state 39
+
+    debug_command  ->  COMMAND_TRANSLATE expr . COMMA expr   (rule 10)
+
+    COMMA	shift, and go to state 57
+
+
+
+state 40
+
+    debug_command  ->  COMMAND_WAKEUP expr .   (rule 8)
+
+    $default	reduce using rule 8 (debug_command)
+
+
+
+state 41
+
+    debug_command  ->  COMMAND_LOAD_EXE STRING .   (rule 15)
+
+    $default	reduce using rule 15 (debug_command)
+
+
+
+state 42
+
+    debug_command  ->  COMMAND_SHOW expr .   (rule 18)
+
+    $default	reduce using rule 18 (debug_command)
+
+
+
+state 43
+
+    factor  ->  OP_MINUS NUMBER .   (rule 37)
+
+    $default	reduce using rule 37 (factor)
+
+
+
+state 44
+
+    expr1  ->  OP_NOT term .   (rule 25)
+    term  ->  term . OP_TIMES factor   (rule 33)
+    term  ->  term . OP_DIV factor   (rule 34)
+    term  ->  term . OP_MOD factor   (rule 35)
+
+    OP_TIMES	shift, and go to state 52
+    OP_DIV	shift, and go to state 53
+    OP_MOD	shift, and go to state 54
+
+    $default	reduce using rule 25 (expr1)
+
+
+
+state 45
+
+    expr1  ->  expr1 . OP_PLUS term   (rule 26)
+    expr1  ->  expr1 . OP_MINUS term   (rule 27)
+    expr1  ->  expr1 . OP_AND term   (rule 28)
+    expr1  ->  expr1 . OP_OR term   (rule 29)
+    expr1  ->  expr1 . OP_RIGHT term   (rule 30)
+    expr1  ->  expr1 . OP_LEFT term   (rule 31)
+    factor  ->  BRACKET_OPEN expr1 . BRACKET_CLOSE   (rule 40)
+
+    OP_PLUS	shift, and go to state 46
+    OP_MINUS	shift, and go to state 47
+    OP_AND	shift, and go to state 48
+    OP_OR	shift, and go to state 49
+    OP_RIGHT	shift, and go to state 50
+    OP_LEFT	shift, and go to state 51
+    BRACKET_CLOSE	shift, and go to state 58
+
+
+
+state 46
+
+    expr1  ->  expr1 OP_PLUS . term   (rule 26)
+
+    NUMBER	shift, and go to state 15
+    LAST_VALUE	shift, and go to state 16
+    VALUE1	shift, and go to state 17
+    VALUE2	shift, and go to state 18
+    VALUE3	shift, and go to state 19
+    VALUE4	shift, and go to state 20
+    VALUE5	shift, and go to state 21
+    VALUE6	shift, and go to state 22
+    VALUE7	shift, and go to state 23
+    VALUE8	shift, and go to state 24
+    VALUE9	shift, and go to state 25
+    OP_MINUS	shift, and go to state 26
+    BRACKET_OPEN	shift, and go to state 28
+
+    term	go to state 59
+    factor	go to state 35
+    db_value	go to state 38
+
+
+
+state 47
+
+    expr1  ->  expr1 OP_MINUS . term   (rule 27)
+
+    NUMBER	shift, and go to state 15
+    LAST_VALUE	shift, and go to state 16
+    VALUE1	shift, and go to state 17
+    VALUE2	shift, and go to state 18
+    VALUE3	shift, and go to state 19
+    VALUE4	shift, and go to state 20
+    VALUE5	shift, and go to state 21
+    VALUE6	shift, and go to state 22
+    VALUE7	shift, and go to state 23
+    VALUE8	shift, and go to state 24
+    VALUE9	shift, and go to state 25
+    OP_MINUS	shift, and go to state 26
+    BRACKET_OPEN	shift, and go to state 28
+
+    term	go to state 60
+    factor	go to state 35
+    db_value	go to state 38
+
+
+
+state 48
+
+    expr1  ->  expr1 OP_AND . term   (rule 28)
+
+    NUMBER	shift, and go to state 15
+    LAST_VALUE	shift, and go to state 16
+    VALUE1	shift, and go to state 17
+    VALUE2	shift, and go to state 18
+    VALUE3	shift, and go to state 19
+    VALUE4	shift, and go to state 20
+    VALUE5	shift, and go to state 21
+    VALUE6	shift, and go to state 22
+    VALUE7	shift, and go to state 23
+    VALUE8	shift, and go to state 24
+    VALUE9	shift, and go to state 25
+    OP_MINUS	shift, and go to state 26
+    BRACKET_OPEN	shift, and go to state 28
+
+    term	go to state 61
+    factor	go to state 35
+    db_value	go to state 38
+
+
+
+state 49
+
+    expr1  ->  expr1 OP_OR . term   (rule 29)
+
+    NUMBER	shift, and go to state 15
+    LAST_VALUE	shift, and go to state 16
+    VALUE1	shift, and go to state 17
+    VALUE2	shift, and go to state 18
+    VALUE3	shift, and go to state 19
+    VALUE4	shift, and go to state 20
+    VALUE5	shift, and go to state 21
+    VALUE6	shift, and go to state 22
+    VALUE7	shift, and go to state 23
+    VALUE8	shift, and go to state 24
+    VALUE9	shift, and go to state 25
+    OP_MINUS	shift, and go to state 26
+    BRACKET_OPEN	shift, and go to state 28
+
+    term	go to state 62
+    factor	go to state 35
+    db_value	go to state 38
+
+
+
+state 50
+
+    expr1  ->  expr1 OP_RIGHT . term   (rule 30)
+
+    NUMBER	shift, and go to state 15
+    LAST_VALUE	shift, and go to state 16
+    VALUE1	shift, and go to state 17
+    VALUE2	shift, and go to state 18
+    VALUE3	shift, and go to state 19
+    VALUE4	shift, and go to state 20
+    VALUE5	shift, and go to state 21
+    VALUE6	shift, and go to state 22
+    VALUE7	shift, and go to state 23
+    VALUE8	shift, and go to state 24
+    VALUE9	shift, and go to state 25
+    OP_MINUS	shift, and go to state 26
+    BRACKET_OPEN	shift, and go to state 28
+
+    term	go to state 63
+    factor	go to state 35
+    db_value	go to state 38
+
+
+
+state 51
+
+    expr1  ->  expr1 OP_LEFT . term   (rule 31)
+
+    NUMBER	shift, and go to state 15
+    LAST_VALUE	shift, and go to state 16
+    VALUE1	shift, and go to state 17
+    VALUE2	shift, and go to state 18
+    VALUE3	shift, and go to state 19
+    VALUE4	shift, and go to state 20
+    VALUE5	shift, and go to state 21
+    VALUE6	shift, and go to state 22
+    VALUE7	shift, and go to state 23
+    VALUE8	shift, and go to state 24
+    VALUE9	shift, and go to state 25
+    OP_MINUS	shift, and go to state 26
+    BRACKET_OPEN	shift, and go to state 28
+
+    term	go to state 64
+    factor	go to state 35
+    db_value	go to state 38
+
+
+
+state 52
+
+    term  ->  term OP_TIMES . factor   (rule 33)
+
+    NUMBER	shift, and go to state 15
+    LAST_VALUE	shift, and go to state 16
+    VALUE1	shift, and go to state 17
+    VALUE2	shift, and go to state 18
+    VALUE3	shift, and go to state 19
+    VALUE4	shift, and go to state 20
+    VALUE5	shift, and go to state 21
+    VALUE6	shift, and go to state 22
+    VALUE7	shift, and go to state 23
+    VALUE8	shift, and go to state 24
+    VALUE9	shift, and go to state 25
+    OP_MINUS	shift, and go to state 26
+    BRACKET_OPEN	shift, and go to state 28
+
+    factor	go to state 65
+    db_value	go to state 38
+
+
+
+state 53
+
+    term  ->  term OP_DIV . factor   (rule 34)
+
+    NUMBER	shift, and go to state 15
+    LAST_VALUE	shift, and go to state 16
+    VALUE1	shift, and go to state 17
+    VALUE2	shift, and go to state 18
+    VALUE3	shift, and go to state 19
+    VALUE4	shift, and go to state 20
+    VALUE5	shift, and go to state 21
+    VALUE6	shift, and go to state 22
+    VALUE7	shift, and go to state 23
+    VALUE8	shift, and go to state 24
+    VALUE9	shift, and go to state 25
+    OP_MINUS	shift, and go to state 26
+    BRACKET_OPEN	shift, and go to state 28
+
+    factor	go to state 66
+    db_value	go to state 38
+
+
+
+state 54
+
+    term  ->  term OP_MOD . factor   (rule 35)
+
+    NUMBER	shift, and go to state 15
+    LAST_VALUE	shift, and go to state 16
+    VALUE1	shift, and go to state 17
+    VALUE2	shift, and go to state 18
+    VALUE3	shift, and go to state 19
+    VALUE4	shift, and go to state 20
+    VALUE5	shift, and go to state 21
+    VALUE6	shift, and go to state 22
+    VALUE7	shift, and go to state 23
+    VALUE8	shift, and go to state 24
+    VALUE9	shift, and go to state 25
+    OP_MINUS	shift, and go to state 26
+    BRACKET_OPEN	shift, and go to state 28
+
+    factor	go to state 67
+    db_value	go to state 38
+
+
+
+state 55
+
+    debug_command  ->  db_value ASSIGN . expr   (rule 13)
+
+    NUMBER	shift, and go to state 15
+    LAST_VALUE	shift, and go to state 16
+    VALUE1	shift, and go to state 17
+    VALUE2	shift, and go to state 18
+    VALUE3	shift, and go to state 19
+    VALUE4	shift, and go to state 20
+    VALUE5	shift, and go to state 21
+    VALUE6	shift, and go to state 22
+    VALUE7	shift, and go to state 23
+    VALUE8	shift, and go to state 24
+    VALUE9	shift, and go to state 25
+    OP_MINUS	shift, and go to state 26
+    OP_NOT	shift, and go to state 27
+    BRACKET_OPEN	shift, and go to state 28
+
+    expr	go to state 68
+    expr1	go to state 33
+    term	go to state 34
+    factor	go to state 35
+    db_value	go to state 38
+
+
+
+state 56
+
+    dump_memory  ->  COMMAND_DUMP expr COMMA . expr   (rule 22)
+
+    NUMBER	shift, and go to state 15
+    LAST_VALUE	shift, and go to state 16
+    VALUE1	shift, and go to state 17
+    VALUE2	shift, and go to state 18
+    VALUE3	shift, and go to state 19
+    VALUE4	shift, and go to state 20
+    VALUE5	shift, and go to state 21
+    VALUE6	shift, and go to state 22
+    VALUE7	shift, and go to state 23
+    VALUE8	shift, and go to state 24
+    VALUE9	shift, and go to state 25
+    OP_MINUS	shift, and go to state 26
+    OP_NOT	shift, and go to state 27
+    BRACKET_OPEN	shift, and go to state 28
+
+    expr	go to state 69
+    expr1	go to state 33
+    term	go to state 34
+    factor	go to state 35
+    db_value	go to state 38
+
+
+
+state 57
+
+    debug_command  ->  COMMAND_TRANSLATE expr COMMA . expr   (rule 10)
+
+    NUMBER	shift, and go to state 15
+    LAST_VALUE	shift, and go to state 16
+    VALUE1	shift, and go to state 17
+    VALUE2	shift, and go to state 18
+    VALUE3	shift, and go to state 19
+    VALUE4	shift, and go to state 20
+    VALUE5	shift, and go to state 21
+    VALUE6	shift, and go to state 22
+    VALUE7	shift, and go to state 23
+    VALUE8	shift, and go to state 24
+    VALUE9	shift, and go to state 25
+    OP_MINUS	shift, and go to state 26
+    OP_NOT	shift, and go to state 27
+    BRACKET_OPEN	shift, and go to state 28
+
+    expr	go to state 70
+    expr1	go to state 33
+    term	go to state 34
+    factor	go to state 35
+    db_value	go to state 38
+
+
+
+state 58
+
+    factor  ->  BRACKET_OPEN expr1 BRACKET_CLOSE .   (rule 40)
+
+    $default	reduce using rule 40 (factor)
+
+
+
+state 59
+
+    expr1  ->  expr1 OP_PLUS term .   (rule 26)
+    term  ->  term . OP_TIMES factor   (rule 33)
+    term  ->  term . OP_DIV factor   (rule 34)
+    term  ->  term . OP_MOD factor   (rule 35)
+
+    OP_TIMES	shift, and go to state 52
+    OP_DIV	shift, and go to state 53
+    OP_MOD	shift, and go to state 54
+
+    $default	reduce using rule 26 (expr1)
+
+
+
+state 60
+
+    expr1  ->  expr1 OP_MINUS term .   (rule 27)
+    term  ->  term . OP_TIMES factor   (rule 33)
+    term  ->  term . OP_DIV factor   (rule 34)
+    term  ->  term . OP_MOD factor   (rule 35)
+
+    OP_TIMES	shift, and go to state 52
+    OP_DIV	shift, and go to state 53
+    OP_MOD	shift, and go to state 54
+
+    $default	reduce using rule 27 (expr1)
+
+
+
+state 61
+
+    expr1  ->  expr1 OP_AND term .   (rule 28)
+    term  ->  term . OP_TIMES factor   (rule 33)
+    term  ->  term . OP_DIV factor   (rule 34)
+    term  ->  term . OP_MOD factor   (rule 35)
+
+    OP_TIMES	shift, and go to state 52
+    OP_DIV	shift, and go to state 53
+    OP_MOD	shift, and go to state 54
+
+    $default	reduce using rule 28 (expr1)
+
+
+
+state 62
+
+    expr1  ->  expr1 OP_OR term .   (rule 29)
+    term  ->  term . OP_TIMES factor   (rule 33)
+    term  ->  term . OP_DIV factor   (rule 34)
+    term  ->  term . OP_MOD factor   (rule 35)
+
+    OP_TIMES	shift, and go to state 52
+    OP_DIV	shift, and go to state 53
+    OP_MOD	shift, and go to state 54
+
+    $default	reduce using rule 29 (expr1)
+
+
+
+state 63
+
+    expr1  ->  expr1 OP_RIGHT term .   (rule 30)
+    term  ->  term . OP_TIMES factor   (rule 33)
+    term  ->  term . OP_DIV factor   (rule 34)
+    term  ->  term . OP_MOD factor   (rule 35)
+
+    OP_TIMES	shift, and go to state 52
+    OP_DIV	shift, and go to state 53
+    OP_MOD	shift, and go to state 54
+
+    $default	reduce using rule 30 (expr1)
+
+
+
+state 64
+
+    expr1  ->  expr1 OP_LEFT term .   (rule 31)
+    term  ->  term . OP_TIMES factor   (rule 33)
+    term  ->  term . OP_DIV factor   (rule 34)
+    term  ->  term . OP_MOD factor   (rule 35)
+
+    OP_TIMES	shift, and go to state 52
+    OP_DIV	shift, and go to state 53
+    OP_MOD	shift, and go to state 54
+
+    $default	reduce using rule 31 (expr1)
+
+
+
+state 65
+
+    term  ->  term OP_TIMES factor .   (rule 33)
+
+    $default	reduce using rule 33 (term)
+
+
+
+state 66
+
+    term  ->  term OP_DIV factor .   (rule 34)
+
+    $default	reduce using rule 34 (term)
+
+
+
+state 67
+
+    term  ->  term OP_MOD factor .   (rule 35)
+
+    $default	reduce using rule 35 (term)
+
+
+
+state 68
+
+    debug_command  ->  db_value ASSIGN expr .   (rule 13)
+
+    $default	reduce using rule 13 (debug_command)
+
+
+
+state 69
+
+    dump_memory  ->  COMMAND_DUMP expr COMMA expr .   (rule 22)
+
+    $default	reduce using rule 22 (dump_memory)
+
+
+
+state 70
+
+    debug_command  ->  COMMAND_TRANSLATE expr COMMA expr .   (rule 10)
+
+    $default	reduce using rule 10 (debug_command)
+
+
+
+state 71
+
+    $   	shift, and go to state 72
+
+
+
+state 72
+
+    $   	shift, and go to state 73
+
+
+
+state 73
+
+    NO ACTIONS

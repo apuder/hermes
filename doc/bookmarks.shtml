@@ -1,0 +1,31 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <!--#include virtual="/templates/header.html" -->
+    <title>Hermes - Educational Operating System</title>
+  </head>
+
+  <body>
+
+    <!--#include virtual="/templates/prolog.html" -->
+    <!--#include file="NAVBAR_HIERARCHY" -->
+    <!--#include file="NAVBAR_SET_main" -->
+
+    <h1>Hermes - Educational Operating System</h1>
+    <h2>Bookmarks</h2>
+
+<ul>
+<li> <a href="http://directory.google.com/Top/Computers/Programming/Languages/Assembly/x86/FAQs,_Help,_and_Tutorials/?il=1">Google links for the x86 processor</a>
+<li> <a href="http://www.freedos.org/">FreeDOS</a>
+<li> <a href="http://geekos.sourceforge.net/docs/crossgcc.html">GeekOS Cross Copiler Documentation</a>
+<li> <a href="http://www.sthoward.com/CrossGCC/">CrosGCC cross compiler FAQ</a>
+<li> <a href="http://www.penguin.cz/~literakl/intel/intel.html">80x86 Instruction Set</a>
+</ul>
+
+
+
+<!--#config timefmt="%w %e %m %Y %H %M %S %Z" -->
+<!--#include virtual="/cgi-bin/epilog.cgi?DOC_URI=$DOCUMENT_URI&REM_ADDR=$REMOTE_ADDR&LAST_MOD=$LAST_MODIFIED" -->
+
+  </body>
+</html>

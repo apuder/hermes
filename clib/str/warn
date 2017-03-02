@@ -1,0 +1,12 @@
+MAKE  Version 3.0  Copyright (c) 1987, 1990 Borland International
+
+Available memory 503183 bytes
+
+rindex.c:45: warning: assignment of non-const * pointer from const *
+strftime.c:75: warning: `_fmt' was declared `extern' and later `static'
+strftime.c:87: warning: implicit declaration of function `_add'
+strftime.c:118: warning: implicit declaration of function `_conv'
+strftime.c:240: warning: `_conv' was declared implicitly `extern' and later `static'
+strftime.c:255: warning: `_add' was declared implicitly `extern' and later `static'
+strtok.c:52: warning: assignment of non-const * pointer from const *
+strtok.c:69: warning: assignment of non-const * pointer from const *

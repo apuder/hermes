@@ -1,0 +1,199 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <!--#include virtual="/templates/header.html" -->
+    <title>Hermes - Educational Operating System</title>
+  </head>
+
+  <body>
+
+    <!--#include virtual="/templates/prolog.html" -->
+    <!--#include file="NAVBAR_HIERARCHY" -->
+    <!--#include file="NAVBAR_SET_main" -->
+
+    <h1>Hermes - Educational Operating System</h1>
+    <h2>Documentation</h2>
+    <h3 id="content">Content</h3>
+    <ol>
+      <li> <a href="#intro">Introduction</a>
+      <li> <a href="#start">Getting Started</a>
+	<ol>
+	  <li> <a href="#hstandard">Downloading and running Hermes</a>
+	  <li> <a href="#hdevel">Hermes and development</a>
+	    <ol>
+	      <li> <a href="#hsource">Getting Hermes sourcecode</a>
+	      <li> <a href="#software">Needed Software</a>
+	      <li> <a href="#mtools">Configuring mtools</a>
+	      <li> <a href="#bochs">Installing and configuring bochs</a>
+	    </ol>
+	</ol>
+    </ol>
+
+    <h3 id="intro">Introduction</h3>
+    <p>Hermes is a small x86-based operating system. It runs in protected mode. The operating system kernel is only a few hundred lines of code and is intended for educational purposes.
+    <p>The Hermes homepage can be found here: <a href="http://www.puder.org/hermes">http://www.puder.org/hermes</a>.
+    <p><a href="#content">[content]</a>
+
+
+    <h3 id="start">Getting Started</h3>
+    <p>If you just want to have a quick look at Hermes, you can prepare a bootable floppy. See <a href="#hstandard">Downloading and Running Hermes</a>.
+    <p>If you are interested in running Hermes under the x86-PC-emulator bochs and/or want to setup a develop environment for Hermes, you can find instructions how to do that in section <a href="#hdevel">Hermes and development</a>.
+    <p><a href="#content">[content]</a>
+
+    
+    <h3 id="hstandard">Downloading and running Hermes</h3>
+    <p>A recent Hermes disk image can be downloaded from <a href="hermes_disk">here</a>.
+    <p>To copy this disk image to a 1.44MB floppy disk, use the unix command dd:
+    <ul>
+      <li> <tt>dd if=hermes_disk of=/dev/fd0</tt>
+    </ul>
+    <p>Where <tt>hermes_disk</tt> is the downloaded disk image (in the current directory) and <tt>/dev/fd0</tt> is your floppy device.
+    <p>Then reboot your system from this floppy.
+    <p><a href="#content">[content]</a>
+      
+    <h3 id="hdevel">Hermes and development</h3>
+    <p>To work with Hermes, to change or add source code, it is more convenient to run Hermes in a pc emulator rather then rebooting from floppy everytime you want to test your changes.
+    <p>The pc emulator bochs works with Hermes, for more information see the section <a href="#bochs">Installing and configuring bochs</a>.
+    <p>There are also some other programs needed to be able to develop with Hermes. A complete list with links to download sites and installation instructions can be found in the <a href="#software">Needed Software</a> section.
+    <p>Cvs is needed to get the latest development sources.
+    <p>To compile Hermes, the c compiler gcc and the assembler nasm are needed.
+    <p>Mtools are used for copying the newly compiled binaries to the Hermes disk image.
+    <p><a href="#content">[content]</a>
+    
+
+    <h3 id="hsource">Getting Hermes sourcecode</h3>
+    <p>You can get the latest devolpment sources directly from the Hermes CVS repository. Use the following commands:
+    <ul>
+      <li> <tt>export CVSROOT=:pserver:anonymous@plum.sfsu.edu:/home/cvs</tt>
+      <li> <tt>cvs login</tt> (press enter when prompted for password)
+      <li> <tt>cvs checkout hermes</tt>
+    </ul>
+    <p>You also have to download the Hermes disk image from  <a href="hermes_disk">here</a>.
+    <p><a href="#content">[content]</a>
+    
+
+    <h3 id="software">Needed Software</h3>
+    <p>To develop with hermes, the following software has to be installed on your machine:
+    <ul>
+      <li> cvs (concurrent versions system)<br>
+	<a href="http://www.cvshome.org">infos and download</a><br><br>      
+      <li> gcc (gnu c compiler), 2.96 or higher<br>
+	<a href="http://www.gnu.org/software/gcc/gcc.html">infos and download</a><br><br>
+      <li> nasm (netwide assembler)<br>
+	<a href="http://nasm.sourceforge.net">infos and download</a><br><br>
+      <li> mtools (accessing MS-DOS disks from unix) - see also <a href="#mtools">Configuring mtools</a><br>
+	<a href="http://mtools.linux.lu">infos and download</a><br><br>
+      <li> bochs (0x86 emulator) - see also <a href="#bochs">Installing and configuring bochs</a><br>
+	<a href="http://bochs.sourceforge.net">infos and download</a><br><br>
+    </ul>
+    <p>Gcc and mtools are usually already installed on your system. For installing the other software, please refer to the documentation provided by the maintainers of these programs.
+    <p><a href="#content">[content]</a>
+    
+
+    <h3 id="mtools">Configuring mtools</h3>
+    <p>To access your Hermes disk image with mtools, you have to add the following lines to your <tt>/etc/mtools.conf</tt> file. To edit this file, you have to be logged in as root:
+
+    <p><pre>
+	# mount the hermes disk image file as drive h:
+	drive h: file="/home/crestani/hermes/hermes_disk"
+      </pre>
+
+    <p>Make sure to substitute my path <tt>/home/crestani/hermes/hermes_disk</tt> with the path to your disk image file.
+
+    <p>You can type
+    <ul><li> <tt>mdir h:</tt></ul>
+    to check if it works: you should get the directory listing of the disk image, like here:
+    <p><pre>
+	crestani@cresh:~/hermes> mdir h:
+	Volume in drive H has no label
+	Volume Serial Number is 2989-4A7C
+	Directory for H:/
+	
+	ibmbio   com     43773 11-30-2001   8:19
+	ibmdos   com     42550 11-30-2001   8:19
+	command  com     53541 11-30-2001   8:19
+	mouse    com     37681 11-30-2001   8:19
+	hermes   run     57378 01-23-2003  15:29
+	ghost        <DIR>     11-05-2002  10:44
+	a        bat        76 11-05-2002  10:46
+	boot             25343 11-10-2002  17:14
+	load     exe     20616 11-05-2002  10:30
+	user             26929 11-08-2002  22:09
+	window           72705 11-08-2002  22:09
+	mouse    ini        24 11-05-2002  18:46
+	tetris           30852 11-11-2002  13:33
+	shell            43456 11-11-2002  11:54  shell
+	db               55480 11-22-2002  11:03
+	15 files             510 404 bytes
+	                     265 216 bytes free       </pre>
+
+	<p>Now you can use mtools like <tt>mcopy</tt> with the letter <tt>h:</tt> to access your hermes disk image.
+    <p><a href="#content">[content]</a>
+    
+
+    <h3 id="bochs">Installing and configuring bochs</h3>
+    <h4>Installing bochs</h4>
+    <p>Download Hermes (see link in section <a href="#software">Needed Software</a>, unzip and untar it.
+    <p>To install, type:
+    <ul>
+      <li> <tt>./configure</tt>
+      <li> <tt>make</tt>
+      <li> if you have root access and want to install bochs system-wide: <tt>make install</tt>
+    </ul>
+    <p>You can find detailed installation descriptions in the doc directory in your bochs source code directory, or online at <a href="http://bochs.sourceforge.net">http://bochs.sourceforge.net</a>.
+    <p>Bochs needs a special X11 VGA font. You can test if this font is already installed on your system:
+    <ul><li> <tt>./test-x11-fonts</tt></ul>
+    <p>If the test output shows something like
+      <pre>
+	Test 2...
+	xterm:  unable to open font "vga", trying "fixed"....
+	...done with Test 2.</pre>
+    you have to install the missing vga font. For this you need root access:
+    <ul><li> <tt>su -c './install-x11-fonts.in'</tt></ul>
+    <p>You might need to reboot your system to install the fonts properly.
+    <p>If you have trouble installing the X11 fonts, you can find detailed instructions on the bochs homepage.
+      
+    <h4>Configuring bochs</h4>
+    <p>To boot Hermes with bochs, you have to edit the <tt>.bochsrc</tt> file. You can put it either in a specific directory, for example your hermes source code directory, or in your home directory. Bochs first tries to find the <tt>.bochsrc</tt> file in the current directory, then in your home directory.
+    <p>If you use bochs only for Hermes, I recommend to put your <tt>.bochsrc</tt> file in your home directory.
+    <p>Here is the content of my <tt>.bochsrc</tt>:
+    <pre>
+# .bochsrc for hermes
+
+# change the romimage path
+romimage: file=/home/crestani/bochs-2.0.1/bios/BIOS-bochs-latest, address=0xf0000
+# change the vgaromimage path
+vgaromimage: /home/crestani/bochs-2.0.1/bios/VGABIOS-elpin-2.40
+# change the floppy to your hermes_disk
+floppya: 1_44=/home/crestani/hermes/hermes_disk, status=inserted
+# boot from floppy
+boot: floppy
+
+
+# you don't need to change anything below this comment
+megs: 32
+floppy_bootsig_check: disabled=0
+log: bochsout.txt
+panic: action=ask
+error: action=report
+info: action=report
+debug: action=ignore
+debugger_log: -
+vga_update_interval: 300000
+keyboard_serial_delay: 250
+keyboard_paste_delay: 100000
+floppy_command_delay: 500
+ips: 1000000
+mouse: enabled=1
+private_colormap: enabled=0
+fullscreen: enabled=0
+screenmode: name="sample"
+keyboard_mapping: enabled=0, map=</pre>
+    <p>Make sure to substitute my path <tt>/home/crestani/hermes/hermes_disk</tt> with the path to you disk image file, and fix the paths to the romimage and the vgaromimage.
+    <p><a href="#content">[content]</a>
+
+<!--#config timefmt="%w %e %m %Y %H %M %S %Z" -->
+<!--#include virtual="/cgi-bin/epilog.cgi?DOC_URI=$DOCUMENT_URI&REM_ADDR=$REMOTE_ADDR&LAST_MOD=$LAST_MODIFIED" -->
+
+  </body>
+</html>

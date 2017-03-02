@@ -1,0 +1,5 @@
+#!/usr/bin/perl
+system( "dd", "bs=1", "count=45" );
+print pack( "C", 2 );
+system( "dd", "bs=1", "count=1", "of=/dev/null" );
+system( "dd" )
